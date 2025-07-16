@@ -27,11 +27,12 @@ exports.createCertificate = async (req,res,next)=>{
             let eva = await User.findById(project.evaluatorID);
             const existed = await fileExists('bucket1' , `certificate/${project.projectNum}.pdf`);
             if(existed){ //existed
-                // console.log('11111');
+                console.log('11111');
                 const command = new GetObjectCommand({Bucket : 'bucket1' , Key : `certificate/${project.projectNum}.pdf`});
                 const signedUrl = await getSignedUrl(s3Public , command , {expiresIn : 3600});
                 certificate = signedUrl;
             }else{
+                console.log('999999');
                 // ==== อัปโหลดเข้า MinIO ====
                 // console.log('testing uitls/buildCertificate');
                 let BUCKET_NAME = 'bucket1';
