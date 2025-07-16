@@ -21,12 +21,8 @@ RUN apt-get update && apt-get install -y \
     xdg-utils \
     wget \
     gnupg \
+    chromium \
     --no-install-recommends && rm -rf /var/lib/apt/lists/*
-
-# ดาวน์โหลด Chromium แบบ stable
-RUN apt-get update && \
-    apt-get install -y chromium && \
-    rm -rf /var/lib/apt/lists/*
 
 # ตั้ง path สำหรับ Puppeteer ไม่ให้ใช้ bundled chromium
 ENV PUPPETEER_EXECUTABLE_PATH=/usr/bin/chromium
