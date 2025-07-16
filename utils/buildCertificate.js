@@ -1,4 +1,4 @@
-const puppeteer = require('puppeteer');
+const puppeteer = require('puppeteer-core');
 const { s3 } = require('../middleware/uploadConfig');
 const { PutObjectCommand , HeadBucketCommand , CreateBucketCommand } = require('@aws-sdk/client-s3');
 const fs = require('fs');
@@ -26,6 +26,7 @@ async function generateRiskCertificatePDF(project, unit, risk, eva) {
 
   const browser = await puppeteer.launch({
   headless: 'new',
+  executablePath: process.env.PUPPETEER_EXECUTABLE_PATH || '/usr/bin/chromium',
   args: ['--no-sandbox', '--disable-setuid-sandbox']
 });
   const page = await browser.newPage();
