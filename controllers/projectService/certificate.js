@@ -63,6 +63,7 @@ exports.createCertificate = async (req,res,next)=>{
                 // console.log('using this path' , certificate);
                 // return res.status(200).json({ success: true, certificate: signedUrl });
             }
+            console.log(certificate);
             return res.status(200).json({success : true , certificate : certificate})
         
         }else {
