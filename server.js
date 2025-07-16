@@ -7,6 +7,7 @@ const auth = require('./routes/auth');
 const project = require('./routes/project');
 const cors = require('cors');
 const helmet = require('helmet');  // กัน header injection
+const { exec } = require('child_process');
 
 dotenv.config({path: './config/config.env'});  // load all variables from file config.env
 
@@ -39,5 +40,29 @@ process.on('unhandledRejection',(err,promise)=>{
 
 app.use('/api/v1/auth',auth);
 app.use('/api/v1/project',project);
+const { exec } = require('child_process');
+
+app.get('/check-chromium-path', (req, res) => {
+  exec('which chromium-browser', (err, stdout, stderr) => {
+    if (err || !stdout) {
+      exec('which chromium', (err2, stdout2, stderr2) => {
+        if (err2 || !stdout2) {
+          exec('which google-chrome', (err3, stdout3, stderr3) => {
+            if (err3 || !stdout3) {
+              res.send('No chromium or google-chrome found');
+            } else {
+              res.send(`google-chrome: ${stdout3.trim()}`);
+            }
+          });
+        } else {
+          res.send(`chromium: ${stdout2.trim()}`);
+        }
+      });
+    } else {
+      res.send(`chromium-browser: ${stdout.trim()}`);
+    }
+  });
+});
+
 
 
