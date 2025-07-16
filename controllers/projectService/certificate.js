@@ -13,6 +13,7 @@ const fileExists = require('../../utils/checkFileExisted');
 // path : /api/v1/project/:id/certificate
 exports.createCertificate = async (req,res,next)=>{
     try{
+        // console.log('here');
         req.params = mongoSanitize.sanitize(req.params);
         if(!mongoose.Types.ObjectId.isValid(req.params.id)) return res.status(400).json({success : false , message : 'ID ทางparams ผิด format ObjectId'});
         let project = await Project.findById(req.params.id);

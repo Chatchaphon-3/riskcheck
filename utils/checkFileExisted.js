@@ -6,7 +6,9 @@ async function fileExists(bucket, key) {
             await s3.send(new HeadObjectCommand({ Bucket: bucket, Key: key }));
             return true;
         } catch (err) {
+            return false;
             if (err.name === 'NotFound' || err.$metadata?.httpStatusCode === 404) return false;
+            console.log('here' , err);
             throw err; // error อื่น เช่น network หรือ permission ก็โยนออกไป
         }
 }
