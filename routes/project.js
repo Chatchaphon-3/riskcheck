@@ -19,7 +19,7 @@ const {uploadDoc} = require('../controllers/projectService/upload');
 router.route('/').post(protect, authorize('user','admin') , createProject).get(protect , getAllProjects);
 router.route('/summary').get(protect , authorize('ce','admin'),summaryInfo);
 router.route('/:id').get(protect,getProject).put(protect,authorize('user','admin','evaluator'),editProject).delete(protect,authorize('user','admin'),deleteProject);
-router.route('/:id/certificate').get(createCertificate);
+router.route('/:id/certificate').get(protect , createCertificate);
 router.route('/:id/doc').patch(protect,authorize('user','admin'),upload.single('file'),uploadDoc);
 // router.route('/:id/riskDetail').get(protect , getRiskDetail);
 router.route('/:id/risk').post(protect , authorize('user','admin'),createRisk).put(protect , authorize('user','admin'),editRiskDetail).get(protect,getRisk).delete(protect , authorize('admin') , deleteRisk);
