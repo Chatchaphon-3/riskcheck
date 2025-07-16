@@ -1,0 +1,9 @@
+# Node modules
+node_modules/
+
+# Test coverage reports
+coverage/
+
+
+# Environment variables
+config/config.env 

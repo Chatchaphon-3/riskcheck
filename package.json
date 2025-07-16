@@ -1,0 +1,44 @@
+{
+  "name": "mainbe",
+  "version": "1.0.0",
+  "main": "server.js",
+  "scripts": {
+    "test": "jest",
+    "dev": "nodemon server.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "@aws-sdk/client-s3": "^3.823.0",
+    "@aws-sdk/s3-request-presigner": "^3.826.0",
+    "axios": "^1.9.0",
+    "bcryptjs": "^3.0.2",
+    "cookie-parser": "^1.4.7",
+    "cors": "^2.8.5",
+    "dotenv": "^16.5.0",
+    "express": "^5.1.0",
+    "express-mongo-sanitize": "^2.2.0",
+    "express-rate-limit": "^7.5.0",
+    "fontkit": "^2.0.4",
+    "helmet": "^8.1.0",
+    "jsonwebtoken": "^9.0.2",
+    "minio": "^8.0.5",
+    "mongodb": "^6.16.0",
+    "multer": "^2.0.1",
+    "multer-s3": "^3.0.1",
+    "newman": "^6.2.1",
+    "pdf-lib": "^1.17.1",
+    "puppeteer": "^24.11.1",
+    "validator": "^13.15.15",
+    "winston": "^3.17.0",
+    "xss": "^1.0.15",
+    "xss-clean": "^0.1.4"
+  },
+  "devDependencies": {
+    "jest": "^30.0.4",
+    "mongodb-memory-server": "^10.1.4",
+    "mongoose": "^8.16.3",
+    "nodemon": "^3.1.10"
+  }
+}
