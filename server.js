@@ -40,7 +40,6 @@ process.on('unhandledRejection',(err,promise)=>{
 
 app.use('/api/v1/auth',auth);
 app.use('/api/v1/project',project);
-const { exec } = require('child_process');
 
 app.get('/check-chromium-path', (req, res) => {
   exec('which chromium-browser', (err, stdout, stderr) => {
