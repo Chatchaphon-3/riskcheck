@@ -20,7 +20,10 @@ app.use(helmet());
 
 //Cors 
 app.use(cors({
-  origin: 'http://localhost:3000',
+  origin: [
+    'http://localhost:3000',
+    'https://fe-intern-project.vercel.app'
+  ],
   credentials: true
 }));
 
